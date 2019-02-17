@@ -58,8 +58,8 @@ int main_with_large_stack_space() {
 
     if (node->children.size()==0) current_height--;
 
-    for (auto iter = node->children.begin(); iter < node->children.end(); iter++)
-      count_nodes.push(*iter);
+    for (int i=0; i < node->children.size(); i++)
+      count_nodes.push(node->children[i]);
   }
 
   cout << max_height << endl;

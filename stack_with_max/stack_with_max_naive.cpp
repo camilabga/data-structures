@@ -4,11 +4,7 @@
 #include <cassert>
 #include <algorithm>
 
-using std::cin;
-using std::string;
-using std::vector;
-using std::cout;
-using std::max_element;
+using namespace std;
 
 class StackWithMax {
     vector<int> stack;
