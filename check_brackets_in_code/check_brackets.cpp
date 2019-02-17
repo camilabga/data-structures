@@ -39,11 +39,11 @@ int main() {
 
         if (next == ')' || next == ']' || next == '}') {
             if (!opening_brackets_stack.empty()) {
-                if(!opening_brackets_stack.top().Matchc(next)){
+                if(opening_brackets_stack.top().Matchc(next)){
+                    opening_brackets_stack.pop();
+                } else {
                     cout << position+1 << endl;
                     return 0;
-                } else {
-                    opening_brackets_stack.pop();
                 }
             } else {
                 cout << position+1 << endl;
