@@ -26,7 +26,7 @@ struct Bracket {
 
 int main() {
     string text;
-    getline(std::cin, text);
+    getline(cin, text);
 
     stack <Bracket> opening_brackets_stack;
     for (int position = 0; position < text.length(); ++position) {
