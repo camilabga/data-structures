@@ -1,5 +1,7 @@
 # Data Structures and Algorithms Specialization
 
+This specialization was a mix of theory and practice: I learned algorithmic techniques for solving various computational problems and implemented about 100 algorithmic coding problems in C++.
+
 ## Course 2. Data Structures
 
 ### Week 1. Basic Data Structures
