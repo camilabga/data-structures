@@ -71,5 +71,3 @@ int main() {
 
     return 0;
 }
-
-//spOletO!172723
