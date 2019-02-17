@@ -1,17 +1,18 @@
 #include <algorithm>
 #include <iostream>
+#include <stack>
 #include <vector>
 #if defined(__unix__) || defined(__APPLE__)
 #include <sys/resource.h>
 #endif
 
-class Node;
+using namespace std;
 
 class Node {
 public:
     int key;
     Node *parent;
-    std::vector<Node *> children;
+    vector<Node *> children;
 
     Node() {
       this->parent = NULL;
@@ -23,37 +24,50 @@ public:
     }
 };
 
-
 int main_with_large_stack_space() {
-  std::ios_base::sync_with_stdio(0);
+  ios_base::sync_with_stdio(0);
   int n;
-  std::cin >> n;
+  cin >> n;
 
-  std::vector<Node> nodes;
-  nodes.resize(n);
-  for (int child_index = 0; child_index < n; child_index++) {
-    int parent_index;
-    std::cin >> parent_index;
-    if (parent_index >= 0)
+  Node nodes[n];
+  Node *root;
+  int parent_index;
+  for (int child_index = 0; child_index < n; child_index++){
+    cin >> parent_index;
+    if (parent_index >= 0){
       nodes[child_index].setParent(&nodes[parent_index]);
-    nodes[child_index].key = child_index;
+      nodes[child_index].key = child_index;
+    } else {
+      nodes[child_index].key = child_index;
+      root=&nodes[child_index];
+    }
   }
 
-  // Replace this code with a faster implementation
-  int maxHeight = 0;
-  for (int leaf_index = 0; leaf_index < n; leaf_index++) {
-    int height = 0;
-    for (Node *v = &nodes[leaf_index]; v != NULL; v = v->parent)
-      height++;
-    maxHeight = std::max(maxHeight, height);
+  stack<Node *> count_nodes;
+  count_nodes.push(root);
+  int max_height=0, current_height=0;
+
+  Node *node;
+
+  while(!count_nodes.empty()){
+    current_height++;
+    if (current_height > max_height) max_height = current_height;
+
+    node = count_nodes.top();
+    count_nodes.pop();
+
+    if (node->children.size()==0) current_height--;
+
+    for (auto iter = node->children.begin(); iter < node->children.end(); iter++)
+      count_nodes.push(*iter);
   }
-    
-  std::cout << maxHeight << std::endl;
+
+  cout << max_height << endl;
+
   return 0;
 }
 
-int main (int argc, char **argv)
-{
+int main (int argc, char **argv){
 #if defined(__unix__) || defined(__APPLE__)
   // Allow larger stack space
   const rlim_t kStackSize = 16 * 1024 * 1024;   // min stack size = 16 MB
@@ -61,15 +75,12 @@ int main (int argc, char **argv)
   int result;
 
   result = getrlimit(RLIMIT_STACK, &rl);
-  if (result == 0)
-  {
-      if (rl.rlim_cur < kStackSize)
-      {
+  if (result == 0){
+      if (rl.rlim_cur < kStackSize){
           rl.rlim_cur = kStackSize;
           result = setrlimit(RLIMIT_STACK, &rl);
-          if (result != 0)
-          {
-              std::cerr << "setrlimit returned result = " << result << std::endl;
+          if (result != 0){
+            cerr << "setrlimit returned result = " << result << endl;
           }
       }
   }
