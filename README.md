@@ -1,6 +1,6 @@
 # Data Structures and Algorithms Specialization
 
-This specialization was a mix of theory and practice: I learned algorithmic techniques for solving various computational problems and implemented about 100 algorithmic coding problems in C++.
+This specialization was a mix of theory and practice: I learned algorithmic techniques for solving various computational problems and implemented about 100 algorithmic coding problems in C++. Course provided by the University of California San Diego in Coursera.
 
 ## Course 2. Data Structures
 
