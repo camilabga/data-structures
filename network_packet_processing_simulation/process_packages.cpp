@@ -32,8 +32,26 @@ public:
     {}
 
     Response Process(const Request &request) {
-        // write your code here
+        if (!finish_time_.empty()) {
+            while (finish_time_.front() <= request.arrival_time) {
+                finish_time_.pop();
+                if (finish_time_.empty()) break;
+            }
+        }
+        
+        if (finish_time_.empty()){
+            finish_time_.push(request.arrival_time + request.process_time);
+            return Response(false, request.arrival_time);
+        }
+        
+        if (finish_time_.size() < this->size_) {
+            finish_time_.push(finish_time_.back()+request.process_time);
+            return Response(false, finish_time_.back());
+        } else {
+            return Response(true, 0);
+        }
     }
+
 private:
     int size_;
     queue <int> finish_time_;
