@@ -28,8 +28,7 @@ class Buffer {
 public:
     Buffer(int size):
         size_(size),
-        finish_time_()
-    {}
+        finish_time_(){}
 
     Response Process(const Request &request) {
         if (!finish_time_.empty()) {
