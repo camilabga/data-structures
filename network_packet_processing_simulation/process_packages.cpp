@@ -31,24 +31,25 @@ public:
         finish_time_(){}
 
     Response Process(const Request &request) {
-        if (!finish_time_.empty()) {
-            while (finish_time_.front() <= request.arrival_time) {
+        while (!finish_time_.empty()) {
+            if (finish_time_.front() <= request.arrival_time)
                 finish_time_.pop();
-                if (finish_time_.empty()) break;
-            }
-        }
-        
-        if (finish_time_.empty()){
+            else
+                break;
+		}
+		
+		if (finish_time_.size() == size_)
+            return Response(true, -1);
+		
+		if (finish_time_.empty()){
             finish_time_.push(request.arrival_time + request.process_time);
             return Response(false, request.arrival_time);
-        }
+		}
+		
+		int last = finish_time_.back();
+        finish_time_.push(last + request.process_time);
         
-        if (finish_time_.size() < this->size_) {
-            finish_time_.push(finish_time_.back()+request.process_time);
-            return Response(false, finish_time_.back());
-        } else {
-            return Response(true, 0);
-        }
+        return Response(false, last);
     }
 
 private:
