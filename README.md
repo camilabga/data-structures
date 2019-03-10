@@ -6,10 +6,10 @@ This specialization was a mix of theory and practice: I learned algorithmic tech
 
 ### Assignment 1. Basic Data Structures :heavy_check_mark:
 
-- Check brackets in the code
-- Compute tree height
-- Network packet processing simulation
-- Extending stack interface
+- Check brackets in the code :heavy_check_mark:
+- Compute tree height :heavy_check_mark:
+- Network packet processing simulation :heavy_check_mark:
+- Extending stack interface :heavy_check_mark:
 
 ### Assignment 2. Priority Queues and Disjoint Sets
 
