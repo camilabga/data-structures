@@ -1,10 +1,10 @@
-# Data Structures and Algorithms Specialization   :heavy_check_mark:
+# Data Structures and Algorithms Specialization
 
 This specialization was a mix of theory and practice: I learned algorithmic techniques for solving various computational problems and implemented about 100 algorithmic coding problems in C++. Course provided by the University of California San Diego in Coursera.
 
 ## Course 2. Data Structures
 
-### Assignment 1. Basic Data Structures
+### Assignment 1. Basic Data Structures   :heavy_check_mark:
 
 - Check brackets in the code :heavy_check_mark:
 - Compute tree height :heavy_check_mark:
