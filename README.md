@@ -4,7 +4,7 @@ This specialization was a mix of theory and practice: I learned algorithmic tech
 
 ## Course 2. Data Structures
 
-### Assignment 1. Basic Data Structures   :heavy_check_mark:
+### Assignment 1. Basic Data Structures   
 
 - Check brackets in the code :heavy_check_mark:
 - Compute tree height :heavy_check_mark:
